@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import {NextIntlClientProvider} from 'next-intl';
 import Script from "next/script";
 import "./globals.css";
 
@@ -31,8 +32,12 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <main>{children}</main>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <NextIntlClientProvider>
+          <main>{children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
